@@ -1,21 +1,50 @@
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { Injectable  } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Optional  } from '@nestjs/common';
 import { PrismaService } from '../../database/PrismaService'; 
-import { Usuario } from '@prisma/client';
+import { Pedido, Usuario } from '@prisma/client';
 
 @Injectable()
 export class UsuarioService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly jwtService: JwtService,
+    @Optional() private readonly jwtService: JwtService,
   ) {}
 
-  async pegarPedidosDoUsuarioPorId(usuarioId: number) {
-    return this.prisma.pedido.findMany({
-      where: { usuarioId },
-    });
+
+  async cadastrarUsuario(usuarioData: { nome: string, email: string, senha: string }): Promise<{ mensagem: string, usuario: Usuario }> {
+    const hashedPassword = await bcrypt.hash(usuarioData.senha, 10);
+
+    try {
+      const usuario = await this.prisma.usuario.create({
+        data: {
+          nome: usuarioData.nome,
+          email: usuarioData.email,
+          senha: hashedPassword,
+        },
+      });
+
+      return {
+        mensagem: 'Usuário cadastrado com sucesso',
+        usuario,
+      };
+    } catch (error) {
+      throw new HttpException('Erro ao cadastrar usuário', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
+
+ 
+
+  // async pegarPedidosDoUsuarioPorId(usuarioId: number): Promise<Pedido[]> {
+  //   if (!usuarioId || isNaN(usuarioId)) {
+  //     throw new HttpException('Usuário inválido', HttpStatus.BAD_REQUEST);
+  //   }
+  
+  //   return this.prisma.pedido.findMany({
+  //     where: { usuarioId },
+  //   });
+  // }
+
 
   async validarUsuario(email: string, senha: string): Promise<Usuario | null> {
     const usuario = await this.prisma.usuario.findUnique({ where: { email } });
