@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import FormularioLogin from "../components/moleculas/FormularioLogin";
+import FormularioLogin from "../components/moleculas/Login/FormularioLogin";
 import HomePage from "../components/templates/HomePage";
 
 const RoutesComponent = () => {

@@ -1,0 +1,16 @@
+@import '../../atomos/estilo.scss';
+
+.Footer{
+    width: 100%;    
+    height: 300px;
+    background-color: #1F177E;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: $cor-um;
+
+    p{
+        text-align: center;
+        padding-top: 250px;
+    }
+
+}

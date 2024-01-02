@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../atomos/Button';
-import { Input } from '../atomos/Inputs';
+import { Button } from '../../organismos/Button';
+import { Input } from '../../organismos/Inputs';
+import './FormularioLogin.scss';
 
 interface FormularioLoginProps {
   onLoginSuccess: (usuario: any) => void;
@@ -14,7 +15,7 @@ const FormularioLogin: React.FC<FormularioLoginProps> = ({ onLoginSuccess, onLog
   const [senha, setSenha] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const FazerLogin = async () => {
     try {
       const API_URL = 'http://localhost:4000';
       const response = await axios.post(`${API_URL}/usuario/login`, {
@@ -24,11 +25,9 @@ const FormularioLogin: React.FC<FormularioLoginProps> = ({ onLoginSuccess, onLog
   
       if (response.data && response.data.accessToken) {
         localStorage.setItem('accessToken', response.data.accessToken);
-  
-        
-        onLoginSuccess(response.data.usuario);
         
         navigate('/home');
+        onLoginSuccess(response.data.usuario);
       }
     } catch (error) {
       console.error('Erro ao fazer login:', error);
@@ -37,15 +36,23 @@ const FormularioLogin: React.FC<FormularioLoginProps> = ({ onLoginSuccess, onLog
   };
   
 
-  useEffect(() => {
-   
-  }, [onLoginSuccess]);
-
   return (
     <>
-      <Input type="text" placeholder='Email'  value={email} onChange={(e) => setEmail(e.target.value)} />
-      <Input type="password" placeholder='Senha' value={senha} onChange={(e) => setSenha(e.target.value)} />
-      <Button className='btn_login' onClick={handleLogin}>Login</Button>
+      <div className='CorpoLogin'>
+
+      <img src='../assets/img/logo.png' alt='logo' className='logo'/>
+
+        <div className='Form'>
+            <div className='AreaInputLogin'>
+              <h2 className='Titulo'>Entrar</h2>
+              <Input className="InpuForm"  type="text" placeholder='Email'  value={email} onChange={(e) => setEmail(e.target.value)} />
+              <Input className="InpuForm" type="password" placeholder='Senha' value={senha} onChange={(e) => setSenha(e.target.value)} />
+              <Button className='btn_login' onClick={FazerLogin}>Continuar</Button>
+            </div>
+
+        </div>
+
+      </div>
     </>
   );
 };

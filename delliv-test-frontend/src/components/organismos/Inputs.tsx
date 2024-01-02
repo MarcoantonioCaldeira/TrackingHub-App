@@ -9,10 +9,10 @@ export const Input = styled.input`
     border: 1px solid;
     margin: 20px;
     border-radius: 5px;
-    font-family: $font_2;
+    font-family: Arial, Helvetica, sans-serif;
     border-color: #E1E1E1;
     display: block;
     margin-left: 5%;
-    height: 45px;
+    height: 50px;
     font-weight: 500;
 `
