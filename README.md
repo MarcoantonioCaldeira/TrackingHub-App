@@ -46,4 +46,4 @@
 https://www.figma.com/file/xxdtfFWkvQUWphYapMJb6v/Delliv-Test?type=design&node-id=0%3A1&mode=design&t=XQlObYhcrZfgtWjq-1
 
 ## Observações Gerais
-> Desenvolvi uma versão de Login com o __Redux__, mas como apareceram muitos bugs e o tempo estava curso, optei por tira-lo e usar o hook __UseState__ para gerenciar o estado local da aplicação.
+> Desenvolvi uma versão de Login com o __Redux__, mas como apareceram muitos bugs e o tempo estava curto, optei por tira-lo e usar o hook __UseState__ para gerenciar o estado local da aplicação.
