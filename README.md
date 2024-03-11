@@ -1,49 +1,28 @@
 #  TrackingHub App
 > Aplicativo de rastreio de entregas
 
+![Animação_TrakingHub](https://github.com/MarcoantonioCaldeira/TrackingHub-App/assets/88919003/d731bacd-95a4-4907-96da-214a53297727)
 
-## Inicialização do Backend
-> Para o Backend ser inicializado siga os seguintes comandos
+## Tecnologias Utilizadas
+  + FrontEnd
+    + ReactJS
+    + Sass
+    + Axios
+    + Design Responsivo
+    + Consumo de RestAPI
+  + Backend
+    + NestJS
+    + Prisma
+    + PostgreSQL
+    + Docker
 
-+ Instalação de dependencias
-
-      npm install
-  
-+ Criação do container com o Banco de Dados
-
-      docker compose up
-  
-+ Rodar o projeto localmente
-
-        npm run start
-
-
-## Inicialização do FrontEnd
-> Para o FrontEnd ser inicializado siga os seguintes comandos
-
-+ Instalação de depencias
-
-      npm install
-
-+ Criação de container
-
-      docker compose up
-
-+ Rodar o projeto
-  
-  + Para rodar o projeto espere o container ser criado. Apos a criação do container acesse o endereço
-
-        localhost:3000
-    
-+ Usuario para fazer o Login
-
-      email: usuario@usuario.com
-      senha: 12345
-  
-## Prototipo 
-> Para acessar o prototipo, clique no Link a baixo
-
-https://www.figma.com/file/xxdtfFWkvQUWphYapMJb6v/Delliv-Test?type=design&node-id=0%3A1&mode=design&t=XQlObYhcrZfgtWjq-1
-
-## Observações Gerais
-> Desenvolvi uma versão de Login com o __Redux__, mas como apareceram muitos bugs e o tempo estava curto, optei por tira-lo e usar o hook __UseState__ para gerenciar o estado local da aplicação.
+## Funcioalidades
+  + FrontEnd
+    + Login
+    + Atualização de status do pedido que é atualizado na API
+    + Logout
+  + BackEnd
+    + Criação de usuarios
+    + Criação de Pedidos
+    + Lista de Pedidos
+    + Login e Autenticação              
